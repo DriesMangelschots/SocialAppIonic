@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>Sign in</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="mainCont">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10" class="px-0">
+
+        <form [formGroup]="loginForm" (ngSubmit)="loginAccount(loginForm.value)">
+          
+          <p class="title">Email</p>
+          <ion-item lines="none" class="inputCont">
+            <ion-icon name="mail" slot="start" color="primary"></ion-icon>
+            <ion-input formControlName="email" type="email" placeholder="Email" class="appTxt"></ion-input>
+          </ion-item>
+          <div class="errorMsg" *ngIf="loginForm.get('email').dirty || loginForm.get('email').touched">
+            <p class="mt-0" *ngIf="loginForm.get('email').hasError('required') "> This field is required </p>
+            <p class="mt-0" *ngIf="loginForm.get('email').hasError('pattern') "> *Email is not valid </p>
+          </div>
+  
+          <p class="title">password</p>
+          <ion-item lines="none" class="inputCont">
+            <ion-icon name="lock-closed" slot="start" color="primary"></ion-icon>
+            <ion-input formControlName="password" type="password" placeholder="Password" class="appTxt"></ion-input>
+          </ion-item>
+          <div class="errorMsg" *ngIf="loginForm.get('password').dirty || loginForm.get('password').touched">
+            <p class="mt-0" *ngIf="loginForm.get('password').hasError('required') "> This field is required </p>
+            <p class="mt-0" *ngIf="loginForm.get('password').hasError('minlength') || loginForm.get('password').hasError('maxlength')"> *Password length should be 5 to 15 characters </p>
+          </div>
+  
+  
+          <ion-button [disabled]="!loginForm.valid" routerDirection="root" expand="block" 
+           class="h-50 mt-3 rounded font-14 bold" type="submit">Log In</ion-button>
+         
+          </form>
+
+      </ion-col>
+    </ion-row>
+  </div>
+  
+  <div class="bottomTxt">
+    <p routerLink="/signup" class="fw500 appTxt">Don't have an account?<u class="primary pl-1">Sign up</u></p>
+  </div>
+</ion-content>

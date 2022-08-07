@@ -1,0 +1,91 @@
+ion-header {
+    ion-toolbar {
+        --background: #ffffff;
+        background: #ffffff;
+        --min-height:75px;
+        ion-title {
+            font-size: 20px;
+            text-transform: unset;
+        }
+    }
+}
+
+ion-content {
+    --background: #ffffff;
+    // --padding-top: 3em;
+    ion-input{
+        color: black;
+    } 
+    .mainCont
+    {
+        display: grid;
+        min-height: 80vh;
+        align-items: center;
+    }
+    .title {
+        font-size: 13px;
+        font-weight: bold;
+        margin: 20px 0px 10px 0px;
+        text-transform: uppercase;
+        color: var(--ion-color-secondary);
+    }
+
+    .inputCont {
+        --padding-start: 20px;
+        --padding-end: 20px;
+        --inner-padding-end: 0px;
+        --min-height: 46px;
+        --background: #F7F8F9;
+        border-radius: 12px;
+        --border-radius: 12px;
+
+        .viewPassIcon {
+            margin: 0px 0px 0px 5px;
+            font-size: 18px;
+            color: #99AEB7;
+        }
+    }
+
+    .linesCont {
+        display: flex;
+        padding: 0px 10px;
+        margin: 40px 0px;
+        white-space: nowrap;
+        align-items: center;
+
+        .hrLine {
+            border-bottom: 1px solid #DDE3E5;
+            width: 100%;
+        }
+
+        p {
+            padding: 0px 10px;
+            margin: 0px;
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--ion-color-secondary);
+        }
+    }
+
+    .imgsCont {
+        display: flex;
+        justify-content: center;
+
+        img {
+            height: 45px;
+            width: 45px;
+            object-fit: cover;
+        }
+
+        img:nth-child(2) {
+            margin: 0px 20px;
+        }
+    }
+
+    .bottomTxt
+    {
+        width: 100%;
+        text-align: center;
+        color: #9BB0B9;
+    }
+}

@@ -1,0 +1,146 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Explore
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div  class="createPostCont">
+    <div class="tabsMainCont">
+      <ion-segment mode="md" color="primary" [(ngModel)]="addPostTab">
+        <ng-container>
+          <ion-segment-button width="50%" value="posts">Write</ion-segment-button>
+          <ion-segment-button value="postMedia">Photos</ion-segment-button>
+        </ng-container>
+
+
+      </ion-segment>
+      <div class="boardCastBtn">
+
+        <ng-container>
+          <ion-button color="primary" (click)="addPost()" [disabled]='postEnableDisable == "" '  class="ion-no-padding">Post</ion-button>
+          </ng-container>
+
+      </div>
+    </div>
+    <div [(ngSwitch)]="addPostTab">
+      <div *ngSwitchCase="'posts'">
+      <ion-item  lines="none" class="addpostCont">
+        <div class="profile">
+          <ion-avatar>
+            <img [src]="dataHelper.currentUser?.imageProfile || '/assets/Images/dummy.png'" class="userProfileImg">
+          </ion-avatar>
+        </div>
+        <ion-textarea [(ngModel)]="text" style="margin-left:5px;" (ionChange)='onChangeTime($event.target.value)' rows="3" placeholder="What’s on your mind, {{dataHelper.currentUser.fullName}}?"></ion-textarea>
+      </ion-item>
+
+
+    </div>
+      <div *ngSwitchCase="'postMedia'" class="postMediaPicker">
+        <ng-container>
+          <div class="postimgCont" *ngIf="images?.length == 0">
+            <div class="txt" (click)="chooseCameraOptions()">
+              <img class="camera" src="/assets/Images/cameraIcon.svg">
+              <p class="font-14 gray mb-0">Click to Upload Images</p>
+            </div>
+          </div>
+        <ion-row *ngIf="images?.length != 0" style="padding: 15px 8px 10px 8px;">
+          <ion-col size-sm="3" size="4" class="postImages" *ngFor="let a of images ; index as i ">
+            <img src={{a.img}}>
+            <ion-icon name="close" color="danger" (click)="imagepop(i)"></ion-icon>
+          </ion-col>
+          <!-- <ion-col size-sm="3" size="4" class="align-center">
+            <div class="addMoreImage" (click)="chooseCameraOptions()">
+              <img src="/assets/Images/cameraIcon.svg" height="20px">
+              <p class="font-12 gray mb-0">Add Image</p>
+            </div>
+          </ion-col> -->
+        </ion-row>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+  <div *ngIf="dataHelper.postsAvailable">
+    <div  class="post" *ngFor="let post of dataHelper.posts">
+      <ion-row class="header">
+        <ion-col size="2">
+          <ion-avatar><img class="userImage" [src]="dataHelper.users?.[post.uid]?.imageProfile || '../../assets/Images/dummy.png'">
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="8">
+          <ion-row style="margin-left: 5px;">
+            <p class="name">{{dataHelper.users?.[post.uid].fullName}}</p>
+          </ion-row>
+          <ion-row style="margin-left: 5px;">
+            <p class="time">{{post.timeStamp | date:'dd/MM/yyyy , hh:mm a'}}</p>
+          </ion-row>
+        </ion-col>
+        <ion-col size="2" class="ion-text-end">
+          <ion-button [attr.disabled]="dataHelper.users?.[post.uid].fullName === dataHelper.currentUser.fullName ? disableDelete : !disableDelete" (click)="deletePost(post)" class="delete-btn" >
+            <ion-icon name="trash" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="content">
+        <ion-col class="reactions" size="2">
+          <ion-icon (click)="toComments(post)" name="chatbubble-outline"></ion-icon>
+          <p>{{post?.comments?.length || 0}}</p>
+          <ion-icon name="heart"  (click)="dataHelper.addLike(post.key)" *ngIf="!post?.likes?.includes(this.dataHelper.currentUser.uid)" color="light"></ion-icon>
+          <ion-icon name="heart" (click)="dataHelper.addLike(post.key)" *ngIf="post?.likes?.includes(this.dataHelper.currentUser.uid)" color="danger"></ion-icon>
+          <p>{{post?.likes?.length || 0}}</p>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+        <ion-col size="9">
+          <p class="description">
+            {{post.text}}
+          </p>
+          <img class="postImg" *ngIf="post.postImages && post.postImages[0]" [src]="post.postImages[0]">
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <div *ngIf="!dataHelper.postsAvailable">
+    <div  class="post">
+      <ion-row class="header">
+        <ion-col size="2">
+          <ion-avatar><img class="userImage" src="../../assets/Images/dummy.png">
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="8">
+          <ion-row>
+            <p class="name" style="width: 40%;"><ion-skeleton-text animated></ion-skeleton-text> </p>
+          </ion-row>
+          <ion-row>
+            <p class="time" style="width: 20%;"><ion-skeleton-text animated></ion-skeleton-text> </p>
+          </ion-row>
+        </ion-col>
+        <ion-col size="2">
+          <ion-icon class="options" name="ellipsis-horizontal-outline"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row class="content">
+        <ion-col class="reactions" size="2">
+          <ion-icon name="chatbubble-outline"></ion-icon>
+          <p style="width: 100%;"><ion-skeleton-text animated></ion-skeleton-text> </p>
+          <ion-icon name="heart-outline"></ion-icon>
+          <p  style="width: 100%;"><ion-skeleton-text animated></ion-skeleton-text> </p>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+        <ion-col size="9">
+          <p class="description">
+            <ion-skeleton-text animated></ion-skeleton-text>
+            <ion-skeleton-text animated></ion-skeleton-text>
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </p>
+          <img class="postImg" src="../../assets/Images/loader.gif">
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

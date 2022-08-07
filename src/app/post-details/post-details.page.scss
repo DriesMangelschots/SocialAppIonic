@@ -1,0 +1,248 @@
+ion-content {
+  --padding-top: 0.7em;
+  color: black;
+  .postDetailsCont {
+    background: white;
+    border-radius: 12px;
+    min-height: 82vh;
+    padding: 0px 0px 15px 0px;
+    position: relative;
+
+    ion-segment {
+      --background: transparent;
+
+      ion-segment-button {
+        --indicator-height: 0px;
+        border-bottom: 2px solid #EEEFF3;
+        --color-checked: var(--ion-color-primary);
+        text-transform: none;
+        font-size: 13px;
+        letter-spacing: normal;
+
+        &.segment-button-checked {
+          border-bottom-color: var(--ion-color-primary) !important;
+        }
+      }
+    }
+
+    .postContentCont {
+      height: 65vh;
+      overflow-y: scroll;
+      padding: 10px 0px 20px 0px;
+      .userImg {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    .likeCont {
+      --padding-start: 18px;
+      --padding-end: 18px;
+      --inner-padding-end: 0px;
+      --min-height: 45px;
+      margin-top: 15px;
+      --background: transparent;
+
+      .userImg {
+        margin: 0px 18px 0px 0px;
+      }
+
+      ion-label {
+        margin: 0px;
+
+        p {
+          margin: 0px;
+          line-height: normal;
+        }
+
+        p:last-child {
+          padding-top: 4px;
+        }
+      }
+
+      .followBtn {
+        margin: 0px 0px 0px 6px;
+        height: 32px;
+        width: 80px;
+        --border-radius: 7px;
+        border-radius: 7px;
+        font-size: 11px;
+        letter-spacing: normal;
+      }
+    }
+    .viewButton{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px !important;
+      margin: 0px auto;
+      border-radius: 10px;
+      width: 80%;
+      justify-content: center;
+      font-size: smaller;
+      background: #EDF0F7;
+      height: 1.7em;
+      text-align: center;
+      box-shadow: 11px 9px 7px -11px black;
+    }
+
+    .commentCont {
+      display: flex;
+      margin-top: 15px;
+      padding: 0px 18px;
+
+      .userImg {
+        margin: 0px 7px 18px 0px;
+        min-width: 45px;
+        align-self: flex-end;
+      }
+
+      .detailCont {
+        width: 80%;
+
+        .msgCont {
+          width: max-content;
+          max-width: 98%;
+          min-width: 52%;
+          padding: 5px 13px;
+          border-radius: 10px 10px 10px 0px;
+          background: #EDF0F7;
+
+          p {
+            margin: 0px;
+          }
+        }
+
+        .time {
+          margin: 5px 0px 0px 8px;
+          font-size: 12px;
+          color: var(--ion-color-secondary);
+        }
+      }
+
+    }
+
+    .commentInputCont {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 20px;
+      left: 0px;
+      z-index: 225;
+      width: 100%;
+      // margin-top: 10px;
+      padding: 10px 18px 0px 18px;
+      background: white;
+
+      .chatInputCont {
+        display: flex;
+        align-items: center;
+        width: 73%;
+
+        .iconsCont {
+          display: flex;
+          align-items: center;
+
+          ion-icon {
+            font-size: 22px;
+            margin-right: 10px;
+            color: #B0B6C3;
+          }
+          img{
+            margin-right: 10px;
+          }
+        }
+
+        .msgInput {
+          --padding-start: 10px;
+          --padding-end: 10px;
+          --inner-padding-end: 0px;
+          --min-height: 10px;
+          --background: transparent;
+          border-left: 1px solid #b2b2b2;
+          width: 100%;
+
+          ion-input {
+            --padding-top: 3px;
+            --padding-bottom: 3px;
+            --padding-end: 0px;
+            font-size: 12px;
+            --padding-end: 0px;
+            --color: var(--ion-color-secondary);
+          }
+        }
+      }
+
+      .sendBtnCont {
+        width: 27%;
+
+        ion-button {
+          width: 100%;
+          height: 34px;
+          font-size: 11px;
+          margin: 0px;
+
+          ion-icon {
+            margin-left: 8px;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.logoImg,
+.headerSearchBarCont
+{
+  display: none;
+}
+
+@media only screen and (min-width: 900px) {
+
+  .mainCont {
+    .postDetailsCont {
+      min-height: 83vh;
+
+      ion-segment {
+
+        ion-segment-button {
+          min-width: 50%;
+        }
+      }
+
+      .commentInputCont {
+        .chatInputCont {
+          width: 80%;
+
+          .msgInput {
+            ion-input {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .sendBtnCont {
+          width: 20%;
+          text-align: right;
+
+          ion-button {
+            width: 110px;
+            height: 45px;
+            font-size: 13px;
+            margin: 0px;
+
+            ion-icon {
+              margin-left: 8px;
+              font-size: 17px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

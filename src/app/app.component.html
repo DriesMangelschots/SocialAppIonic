@@ -1,0 +1,37 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-item  lines="none" class="addpostCont">
+            <div class="profile">
+              <ion-avatar>
+                <img [src]="dataHelper.currentUser?.imageProfile || '/assets/Images/dummy.png'" class="userProfileImg">
+              </ion-avatar>
+            </div>
+
+            <p class="name">{{dataHelper.currentUser?.fullName}}</p>
+             </ion-item>
+
+          <ion-menu-toggle  auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item (click)="p.title === 'Darkmode' ? toggleDarkMode() : '' " (click)="p.title === 'Home' ? homeRedirect() : ''" (click)="logout(p.title)" routerDirection="root" [routerLink]="[p.url]"  lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+
+
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-buttons >
+            <ion-button (click)="toggleDarkMode()" >
+              <ion-icon  [name]="'moon-outline'" slot="icon-only" color="medium"></ion-icon>
+            </ion-button>
+
+          </ion-buttons>
+
+        </ion-list>
+
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

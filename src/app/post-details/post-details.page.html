@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/folder"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-justify-content-center mainCont">
+    <ion-col size-md="6" size="11">
+      <div class="postDetailsCont">
+        <ion-segment mode="md" (click)="setSegment()" color="primary" [(ngModel)]="activeTab">
+          <ion-segment-button value="likes">Likes</ion-segment-button>
+          <ion-segment-button value="comments">Comments</ion-segment-button>
+        </ion-segment>
+        <div  id="scrollableDiv" class="postContentCont scrollContent">
+          <div *ngIf="activeTab === 'likes'">
+            <ion-item *ngFor="let uid of dataHelper.selectedPost?.likes" lines="none" class="likeCont">
+              <img slot="start"
+                [src]="dataHelper.users?.[uid]?.imageProfile || '/assets/Images/dummy.png'"
+                class="userImg">
+              <ion-label>
+                <p class="font-14 secondary">{{dataHelper.users?.[uid]?.fullName}}</p>
+              </ion-label>
+            </ion-item>
+
+          </div>
+          <div *ngIf="activeTab === 'comments'" >
+            <div class="commentCont" *ngFor="let com of dataHelper.selectedPost?.comments?.slice(0,8)">
+              <img [src]="dataHelper.users?.[com?.uid]?.imageProfile || '/assets/Images/dummy.png'"
+                class="userImg">
+              <div class="detailCont">
+                <div class="msgCont">
+                  <p class="font-14 bold">{{dataHelper.users?.[com.uid]?.fullName}}</p>
+                  <p class="font-12 pt-1">{{com.text}}</p>
+                </div>
+                <p class="time">{{com.timeStamp | date:'dd/MM/yyyy, hh:mm a'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="activeTab ==='comments'" class="commentInputCont">
+          <div class="chatInputCont">
+            <ion-item lines="none" class="msgInput">
+              <ion-input type="text" [(ngModel)]="comment.text" placeholder="Write a comment..."></ion-input>
+            </ion-item>
+          </div>
+          <div class="sendBtnCont">
+            <ion-button color="primary" *ngIf="load === false" [disabled]="!comment.text"
+              (click)="addComment()" class="ion-no-padding" shape="round">Send<ion-icon
+                name="send"></ion-icon>
+            </ion-button>
+            <ion-button color="primary" *ngIf="load === true" disabled="true" class="ion-no-padding" shape="round">
+              <ion-spinner></ion-spinner>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

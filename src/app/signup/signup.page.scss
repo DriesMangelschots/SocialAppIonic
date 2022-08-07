@@ -1,0 +1,55 @@
+ion-header {
+    ion-toolbar {
+        --background: #ffffff;
+        background: #ffffff;
+        --min-height:75px;
+        ion-title {
+            font-size: 20px;
+            text-transform: unset;
+        }
+    }
+}
+
+ion-content {
+    --background: #ffffff;
+
+    .mainCont
+    {
+        display: grid;
+        min-height: 80vh;
+        align-items: center;
+    }
+    .title {
+        font-size: 13px;
+        font-weight: bold;
+        margin: 20px 0px 10px 0px;
+        text-transform: uppercase;
+        color: var(--ion-color-secondary);
+    }
+
+    .inputCont {
+        --padding-start: 20px;
+        --padding-end: 20px;
+        --inner-padding-end: 0px;
+        --min-height: 46px;
+        --background: #F7F8F9;
+        border-radius: 12px;
+        --border-radius: 12px;
+
+        .viewPassIcon {
+            margin: 0px 0px 0px 5px;
+            font-size: 18px;
+            color: #99AEB7;
+        }
+    }
+
+    .bottomTxt
+    {
+       // position: absolute;
+       // bottom: 25px;
+       // left: 0px;
+        width: 100%;
+        text-align: center;
+        color: #9BB0B9;
+    }
+}

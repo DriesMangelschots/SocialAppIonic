@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>Sign up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="mainCont">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10" class="px-0">
+        <form [formGroup]="signupForm" (ngSubmit)="createAccount(signupForm.value)">
+        <p class="title">Full Name</p>
+        <ion-item lines="none" class="inputCont">
+          <ion-icon name="person" slot="start" color="primary"></ion-icon>
+          <ion-input formControlName="fullName" type="text" class="appTxt" placeholder="Full Name"></ion-input>
+        </ion-item>
+        <div class="errorMsg" *ngIf="signupForm.get('fullName').dirty || signupForm.get('fullName').touched">
+          <p class="mt-0" *ngIf="signupForm.get('fullName').hasError('required') "> This field is required </p>
+          <p class="mt-0" *ngIf="signupForm.get('fullName').hasError('minlength') || signupForm.get('fullName').hasError('maxlength')"> *Full Name length should be 3 to 30 characters </p>
+        </div>
+    
+        <p class="title">Email</p>
+        <ion-item lines="none" class="inputCont">
+          <ion-icon name="mail" slot="start" color="primary"></ion-icon>
+          <ion-input formControlName="email" type="email" placeholder="Email" class="appTxt"></ion-input>
+        </ion-item>
+        <div class="errorMsg" *ngIf="signupForm.get('email').dirty || signupForm.get('email').touched">
+          <p class="mt-0" *ngIf="signupForm.get('email').hasError('required') "> This field is required </p>
+          <p class="mt-0" *ngIf="signupForm.get('email').hasError('pattern') "> *Email is not valid </p>
+        </div>
+
+        <p class="title">password</p>
+        <ion-item lines="none" class="inputCont">
+          <ion-icon name="lock-closed" slot="start" color="primary"></ion-icon>
+          <ion-input formControlName="password" type="password" placeholder="Password" class="appTxt"></ion-input>
+        </ion-item>
+        <div class="errorMsg" *ngIf="signupForm.get('password').dirty || signupForm.get('password').touched">
+          <p class="mt-0" *ngIf="signupForm.get('password').hasError('required') "> This field is required </p>
+          <p class="mt-0" *ngIf="signupForm.get('password').hasError('minlength') || signupForm.get('password').hasError('maxlength')"> *Password length should be 5 to 15 characters </p>
+        </div>
+      
+        <p class="title">confirm password</p>
+        <ion-item lines="none" class="inputCont">
+          <ion-icon name="lock-closed" slot="start" color="primary"></ion-icon>
+          <ion-input formControlName="cPassword" type="password" placeholder="Confirm Password" class="appTxt"></ion-input>
+        </ion-item>
+        <div class="errorMsg" *ngIf="signupForm.get('cPassword').dirty || signupForm.get('cPassword').touched">
+          <p class="mt-0" *ngIf="signupForm.get('cPassword').hasError('required') "> This field is required </p>
+          <p class="mt-0" *ngIf="signupForm.get('cPassword').hasError('minlength') || signupForm.get('cPassword').hasError('maxlength')"> *Confirm Password length should be 5 to 15 characters </p>
+        </div>
+
+        <ion-button [disabled]="!signupForm.valid" routerDirection="root" expand="block" 
+         class="h-50 mt-3 rounded font-14 bold" type="submit">Sign Up</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="bottomTxt">
+    <p routerLink="/login" class="fw500 appTxt">Already have an account?<u class="primary pl-1">Sign in</u></p>
+  </div>
+</ion-content>

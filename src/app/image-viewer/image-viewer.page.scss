@@ -1,0 +1,31 @@
+ion-toolbar{
+  --border-width: 0px !important;
+  
+  --height: 2rem !important;
+  --padding-start: 0px !important;
+  --padding-end: 0px !important;
+  ion-button{
+    --background: transparent;
+    --color:black;
+  }
+}
+ion-content{
+  --color: white!important;
+  --background: white;
+  background: white;
+  text-align: center;
+  .img{
+    // height: 100%;
+    object-fit:cover;
+    margin: 0px auto;
+    background: white;
+  }
+  ion-slides {
+    height: 100%;
+    background: white;
+    ion-slide {
+      object-fit: contain;
+    }
+  }
+}
+

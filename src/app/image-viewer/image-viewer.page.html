@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button (click)="dismiss()" slot="end">
+      <ion-icon  name="close" slot="icon-only"></ion-icon>
+    </ion-button >
+      
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides mode="ios" #slides *ngIf="slideOptions && type=='array'" [options]="slideOptions">
+    <ion-slide *ngFor="let image of imagesArray">
+      <ion-img src={{image}}></ion-img>
+    </ion-slide>  
+  </ion-slides>
+ 
+  <img class="img" *ngIf="type=='image'" [src]="oneimage">
+</ion-content>
