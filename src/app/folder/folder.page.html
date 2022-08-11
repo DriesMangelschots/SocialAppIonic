@@ -94,6 +94,7 @@
           <ion-icon name="heart"  (click)="dataHelper.addLike(post.key)" *ngIf="!post?.likes?.includes(this.dataHelper.currentUser.uid)" color="light"></ion-icon>
           <ion-icon name="heart" (click)="dataHelper.addLike(post.key)" *ngIf="post?.likes?.includes(this.dataHelper.currentUser.uid)" color="danger"></ion-icon>
           <p>{{post?.likes?.length || 0}}</p>
+          <ion-icon name="share-outline"></ion-icon>
         </ion-col>
         <ion-col size="1"></ion-col>
         <ion-col size="9">
@@ -129,6 +130,8 @@
           <ion-icon name="chatbubble-outline"></ion-icon>
           <p style="width: 100%;"><ion-skeleton-text animated></ion-skeleton-text> </p>
           <ion-icon name="heart-outline"></ion-icon>
+          <p  style="width: 100%;"><ion-skeleton-text animated></ion-skeleton-text> </p>
+          <ion-icon name="share-outline"></ion-icon>
           <p  style="width: 100%;"><ion-skeleton-text animated></ion-skeleton-text> </p>
         </ion-col>
         <ion-col size="1"></ion-col>

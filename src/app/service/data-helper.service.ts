@@ -42,7 +42,6 @@ export class DataHelperService {
     this.getUsers();
     this.getPosts();
   }
-
   async presentLoading(message?) {
     if (!this.loader) {
       this.loader = await this.loadingCtrl.create({

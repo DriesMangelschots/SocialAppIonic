@@ -11,46 +11,61 @@
     </ion-col>
   </ion-row>
   <div class="user">
+    <ion-card>
     <ion-row class="image">
+
       <ion-avatar id="profile-image" (click)="changeProfileImage()"><img [src]="dataHelper.currentUser?.imageProfile || '../../assets/Images/dummy.png'"></ion-avatar>
     </ion-row>
-    <ion-row class="name">
+    <ion-row class="name" >
+
+      <h4>Name: </h4>
       <h4>{{dataHelper.currentUser.fullName}}</h4>
+      <br>
+
+      <input *ngIf="canEditCode" [(ngModel)]="dataHelper.currentUser.fullName" type="text" class="form-control" />
+    </ion-row>
+    <ion-row class="name">
+
+      <h4 >Email: </h4>
+      <h4 >{{dataHelper.currentUser.email}}</h4>
     </ion-row>
     <ion-row class="description">
+
       <!-- <p>{{dataHelper.selectedUser.support.text}}</p> -->
+
     </ion-row>
+  </ion-card>
   </div>
-  <div class="socialStat">
-    <ion-row class="social">
-      <ion-col size="4">
-        <h4>438</h4>
-        <p>Posts</p>
-      </ion-col>
-      <ion-col size="4">
-        <h4>298</h4>
-        <p>Following</p>
-      </ion-col>
-      <ion-col size="4">
-        <h4>321K</h4>
-        <p>Followers</p>
-      </ion-col>
-    </ion-row>
-  </div>
-  <ion-row class="buttons">
-    <ion-button>Follow</ion-button>
-    <ion-button fill="clear" class="clear">Message</ion-button>
-  </ion-row>
-  <ion-row class="imagtitle">
-    <h4>Photos</h4>
-    <div class="icon">
-      <ion-icon (click)="grid='false'" name="list-outline"></ion-icon>
-      <ion-icon (click)="grid='true'" name="grid-outline"></ion-icon>
-    </div>
-  </ion-row>
-  <ion-grid [ngClass]="grid=='true'?'grid':'list'">
-    <ion-col *ngFor="let src of imagesArray">
-      <img [src]="src">
-    </ion-col>
-  </ion-grid>
+<!--  <div class="socialStat">-->
+<!--    <ion-row class="social">-->
+<!--      <ion-col size="4">-->
+<!--        <h4>438</h4>-->
+<!--        <p>Posts</p>-->
+<!--      </ion-col>-->
+<!--      <ion-col size="4">-->
+<!--        <h4>298</h4>-->
+<!--        <p>Following</p>-->
+<!--      </ion-col>-->
+<!--      <ion-col size="4">-->
+<!--        <h4>321K</h4>-->
+<!--        <p>Followers</p>-->
+<!--      </ion-col>-->
+<!--    </ion-row>-->
+<!--  </div>-->
+<!--  <ion-row class="buttons">-->
+<!--    <ion-button>Follow</ion-button>-->
+<!--    <ion-button fill="clear" class="clear">Message</ion-button>-->
+<!--  </ion-row>-->
+<!--  <ion-row class="imagtitle">-->
+<!--    <h4>Photos</h4>-->
+<!--    <div class="icon" >-->
+<!--      <ion-icon (click)="grid='false'" name="list-outline"></ion-icon>-->
+<!--      <ion-icon (click)="grid='true'" name="grid-outline"></ion-icon>-->
+<!--    </div>-->
+<!--  </ion-row>-->
+<!--  <ion-grid [ngClass]="grid=='true'?'grid':'list'">-->
+<!--    <ion-col  *ngFor="let src of imagesArray">-->
+<!--      <img  [src]="src">-->
+<!--    </ion-col>-->
+<!--  </ion-grid>-->
 </ion-content>

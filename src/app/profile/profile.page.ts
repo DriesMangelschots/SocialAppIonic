@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import {AlertController, NavController} from '@ionic/angular';
 import { DataHelperService } from '../service/data-helper.service';
 import {Router} from '@angular/router';
 
@@ -9,10 +9,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  grid: any = 'true'
+  grid: any = 'true';
+  canEditCode = false;
+
   constructor(public navCtrl: NavController, public dataHelper: DataHelperService,
-              public router: Router) { }
-  imagesArray: any = ["../../assets/Images/a.jpg", "../../assets/Images/a.jpg", "../../assets/Images/a.jpg", "../../assets/Images/a.jpg", "../../assets/Images/a.jpg", "../../assets/Images/a.jpg", "../../assets/Images/a.jpg", "../../assets/Images/a.jpg", "../../assets/Images/a.jpg", "../../assets/Images/a.jpg", "../../assets/Images/a.jpg", "../../assets/Images/a.jpg"]
+              public router: Router, public alertCtrl: AlertController) { }
+  imagesArray: any = ['../../assets/Images/a.jpg', '../../assets/Images/a.jpg', '../../assets/Images/a.jpg', '../../assets/Images/a.jpg', '../../assets/Images/a.jpg', '../../assets/Images/a.jpg', '../../assets/Images/a.jpg', '../../assets/Images/a.jpg', '../../assets/Images/a.jpg', '../../assets/Images/a.jpg', '../../assets/Images/a.jpg', '../../assets/Images/a.jpg'];
   ngOnInit() {
   }
   back() {
@@ -24,6 +26,7 @@ export class ProfilePage implements OnInit {
     if (!image) {
       return;
     }
+
     this.dataHelper.presentLoading();
     const imageProfileUrl = await this.dataHelper.uploadImage(image.img);
     const userData = this.dataHelper.currentUser;
@@ -37,5 +40,6 @@ export class ProfilePage implements OnInit {
       this.dataHelper.stopLoading();
     });
   }
+
 
 }

@@ -4,6 +4,9 @@ import { ActionSheetController, NavController } from '@ionic/angular';
 import { DataHelperService } from '../service/data-helper.service';
 // import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 import { Camera, CameraResultType } from '@capacitor/camera';
+
+
+
 @Component({
   selector: 'app-folder',
   templateUrl: './folder.page.html',
@@ -15,11 +18,20 @@ export class FolderPage implements OnInit {
   postEnableDisable: any = '';
   text: any;
   disableDelete = false;
+
   constructor(public dataHelper: DataHelperService,
     // private camera: Camera,
     public actionSheetController: ActionSheetController,
     public navCtrl: NavController) {
   }
+  // openSocial(){
+  //    Share.share({
+  //     title: 'See cool stuff',
+  //     text: 'Really awesome thing you need to see right meow',
+  //     url: 'http://ionicframework.com/',
+  //     dialogTitle: 'Share with buddies',
+  //   });
+  // };
   navigate(user) {
     this.navCtrl.navigateForward('profile');
   }

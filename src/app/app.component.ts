@@ -12,12 +12,7 @@ import {ThemeService} from './service/theme.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  // darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  //
-  // iconMoon = true;
-  // modeText ='Lichte mode';
-  //
-  // darkmode: 'Darkmode';
+
   public appPages = [
     { title: 'Home', url: '/folder', icon: 'home' },
     { title: 'Profile', url: '/profile', icon: 'person' },
@@ -40,36 +35,6 @@ export class AppComponent {
   toggleDarkMode() {
     this.themeService.toggleAppTheme();
   }
-  // toggleDarkMode = () => {
-  //
-  //   this.changeNameMode();
-  //   if (this.darkMode) {
-  //     this.renderer.addClass(document.body,'dark');
-  //     console.log('enable darkmode');
-  //
-  //   } else {
-  //     this.renderer.removeClass(document.body,'dark');
-  //     console.log('enable lightmode');
-  //   }
-  //
-  // };
-  // toggleIcon = (): void => {
-  //   this.darkMode = !this.darkMode;
-  //   this.toggleDarkMode();
-  //   this.iconMoon = !this.iconMoon;
-  //
-  //
-  // };
-  // changeNameMode= () => {
-  //
-  //   if (this.darkMode) {
-  //     this.modeText = 'Donkere mode';
-  //
-  //   } else {
-  //     this.modeText = 'Lichte mode';
-  //
-  //   }
-  // };
   homeRedirect() {
     if (this.dataHelper.currentUser === null) {
      return this.router.navigate(['/Logout']);

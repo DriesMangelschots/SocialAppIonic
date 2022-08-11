@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "android-splash": "cordova-res android --type splash --skip-config --copy"
   },
   "private": true,
   "dependencies": {
